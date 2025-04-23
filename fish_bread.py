@@ -30,7 +30,7 @@ def order_bread():
 
 def admin_order():
     while True:
-        bread_type = input("관리자모드를 실행하겠습니다 (붕어빵투입, 처음으로):")
+        bread_type = input(     "관리자모드를 실행하겠습니다 (붕어빵투입, 처음으로):")
         if bread_type !="붕어빵투입":
             print("다시 입력하시오")
         if bread_type=="처음으로":
@@ -47,6 +47,7 @@ def admin_order():
 
 #붕어빵  메인화면
 while True:
+    print("------------------------------------------")
     mode = input("원하는 주문을 선택하세요(주문, 관리자, 종료):")
     if mode =="종료":
         break
