@@ -15,26 +15,37 @@ def order_bread():
         bread_type = input("주문할 붕어빵 맛을 선택하십시오(팥,슈크림,초코,처음으로):")
         if bread_type not in ["팥","슈크림","초코","처음으로"]:
             print("다시 입력하시오")
-            order_bread()
         if bread_type=="처음으로":
             break
         bread_count = int(input(f"주문할 개수를 입력하시오 현재개수({stock[bread_type]}개):"))
-        if stock[bread_type] >= int(bread_count):
+        if stock[bread_type] >= (bread_count):
             stock[bread_type] -= bread_count
             sales[bread_type] += bread_count
             print(f"손님께서 주문하신 {bread_type}붕어빵 {bread_count}개 나왔습니다")
-            order_bread()
         else:
-            print(f"재고가 부족합니다")
-        
+            print("재고가 부족합니다")
 
+
+#붕어빵 admin 기능
 
 def admin_order():
     while True:
-        admin_type = input("관리자모드를 실행하겠습니다")
-        if admin_type=="처음으로":
+        bread_type = input("관리자모드를 실행하겠습니다 (붕어빵투입, 처음으로):")
+        if bread_type !="붕어빵투입":
+            print("다시 입력하시오")
+        if bread_type=="처음으로":
             break
+        bread_type = input(f"투입할 붕어빵 맛을 선택하시오(팥,슈크림,초코,처음으로):")
+        if bread_type == "처음으로":
+            break
+        bread_count = int(input(f"투입할 개수를 입력하시오. 현재개수({stock[bread_type]}개):"))
+        if bread_count > 0:
+            stock[bread_type] += bread_count
+            print(f"{bread_type}붕어빵 {bread_count}개 넣었습니다")
+        else:
+            print("다시 입력하십시오")
 
+#붕어빵  메인화면
 while True:
     mode = input("원하는 주문을 선택하세요(주문, 관리자, 종료):")
     if mode =="종료":
